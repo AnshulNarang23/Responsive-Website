@@ -1,35 +1,29 @@
 const scroll = new LocomotiveScroll({
-    el: document.querySelector('#main'),
-    smooth: true
+  el: document.querySelector("#main"),
+  smooth: true,
 });
 
+const fixed = document.querySelector("#fixed-image");
+const elems = document.querySelectorAll(".elem");
 
-    var elemC = document.querySelector("#elem-container")
-    var fixed = document.querySelector("#fixed-image")
-    elemC.addEventListener("mouseenter", function () {
-        fixed.style.display = "block"
-    })
-    elemC.addEventListener("mouseleave", function () {
-        fixed.style.display = "none"
-    })
+elems.forEach(function (e) {
+  e.addEventListener("mouseenter", function () {
+    const image = e.getAttribute("data-image");
+    fixed.style.backgroundImage = `url(${image})`;
+    fixed.classList.add("show");
+  });
 
-    var elems = document.querySelectorAll(".elem")
-    elems.forEach(function (e) {
-        e.addEventListener("mouseenter", function () {
-            var image = e.getAttribute("data-image")
-            fixed.style.backgroundImage = `url(${image})`
-        })
-    })
+  e.addEventListener("mouseleave", function () {
+    fixed.classList.remove("show");
+  });
+});
 
-    function swiperAnimation() {
-   const swiper = new Swiper('.swiper', {
-    slidesPerView: 'auto',
+function swiperAnimation() {
+  const swiper = new Swiper(".swiper", {
+    slidesPerView: "auto",
     spaceBetween: 20,
     grabCursor: true,
     freeMode: true,
   });
 }
-swiperAnimation()
-
-
-
+swiperAnimation();
