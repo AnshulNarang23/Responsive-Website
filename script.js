@@ -6,15 +6,15 @@ const scroll = new LocomotiveScroll({
 const fixed = document.querySelector("#fixed-image");
 const elems = document.querySelectorAll(".elem");
 
-elems.forEach(function (e) {
-  e.addEventListener("mouseenter", function () {
-    const image = e.getAttribute("data-image");
+elems.forEach(function (elem) {
+  elem.addEventListener("mouseenter", function () {
+    const image = elem.getAttribute("data-image");
     fixed.style.backgroundImage = `url(${image})`;
-    fixed.classList.add("show");
+    fixed.style.opacity = 1;
   });
 
-  e.addEventListener("mouseleave", function () {
-    fixed.classList.remove("show");
+  elem.addEventListener("mouseleave", function () {
+    fixed.style.opacity = 0;
   });
 });
 
